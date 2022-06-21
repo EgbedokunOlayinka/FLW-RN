@@ -17,8 +17,8 @@ type AppContextType = {
   user: IUser | null;
   loginUser: (val: IUser) => Promise<void | string>;
   logoutUser: () => void;
-  addItemToInventory: (val: IInventoryItem) => Promise<void>;
-  editInventoryItem: (val: IInventoryItem) => Promise<void>;
+  addItemToInventory: (val: IInventoryItem) => Promise<void | string>;
+  editInventoryItem: (val: IInventoryItem) => Promise<void | string>;
   removeItemFromInventory: (val: string) => Promise<void>;
 };
 
@@ -145,14 +145,31 @@ export const AppProvider: React.FC = ({ children }) => {
 
   const logoutUser = useCallback(async () => {
     await AsyncStorage.removeItem(currentUserKey);
+    // await AsyncStorage.removeItem(inventoryKey);
+
     setUser(null);
     setInventory([]);
   }, [user, inventory]);
 
   const addItemToInventory = useCallback(
-    async (val: IInventoryItem) => {
+    async (val: IInventoryItem): Promise<string | void> => {
+      // check if an item with the same name exists already
+      const itemFound = inventory.find((item) => item.name === val.name);
+      if (itemFound) {
+        return 'An item with the same name exists already';
+      }
+
       const newInventory = [...inventory, val];
-      await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
+      const oldInventory = await getInventoryFromStorage();
+
+      const mergedInventory = oldInventory
+        ? [...oldInventory, val]
+        : newInventory;
+
+      // console.log({ mergedInventory });
+
+      await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
+
       setInventory(newInventory);
     },
     [inventory]
@@ -162,18 +179,37 @@ export const AppProvider: React.FC = ({ children }) => {
     async (val: string) => {
       // filter the item from the inventory by its ID
       const newInventory = [...inventory].filter((item) => item.id !== val);
-      await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
+      const oldInventory = await getInventoryFromStorage();
+
+      const mergedInventory = oldInventory
+        ? [...oldInventory].filter((item) => item.id !== val)
+        : newInventory;
+
+      await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
+
       setInventory(newInventory);
     },
     [inventory]
   );
 
   const editInventoryItem = useCallback(
-    async (val: IInventoryItem) => {
+    async (val: IInventoryItem): Promise<string | void> => {
+      // check if an item with the same name exists already
+      const itemFound = inventory.find((item) => item.name === val.name);
+      if (itemFound) {
+        return 'An item with the same name exists already';
+      }
+
       const newInventory = [...inventory].map((item) =>
         item.id === val.id ? val : item
       );
-      await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
+      const oldInventory = await getInventoryFromStorage();
+
+      const mergedInventory = oldInventory
+        ? [...oldInventory, val]
+        : newInventory;
+
+      await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
       setInventory(newInventory);
     },
     [inventory]
@@ -181,19 +217,30 @@ export const AppProvider: React.FC = ({ children }) => {
 
   const loadAppDataFromStorage = useCallback(async () => {
     try {
-      const storedUsers = await getUsersFromStorage();
       const storedCurrentUser = await getCurrentUserFromStorage();
       const storedInventory = await getInventoryFromStorage();
 
       setUser(storedCurrentUser);
 
+      // console.log({ storedInventory });
+
       if (storedInventory) {
         setInventory(
-          !storedCurrentUser
-            ? []
-            : inventory.filter((item) => item.user === storedCurrentUser.email)
+          storedInventory?.filter(
+            (item) => item.user === storedCurrentUser?.email
+          )
         );
+      } else {
+        setInventory([]);
       }
+
+      // if (storedInventory) {
+      //   setInventory(
+      //     !storedCurrentUser
+      //       ? []
+      //       : inventory.filter((item) => item.user === storedCurrentUser.email)
+      //   );
+      // }
     } catch (error) {}
   }, []);
 

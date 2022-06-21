@@ -3,6 +3,7 @@ import { FormikHelpers, useFormik } from 'formik';
 import { customAlphabet } from 'nanoid/non-secure';
 import React, { useCallback } from 'react';
 import {
+  Alert,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -34,16 +35,9 @@ interface IFormValues {
 }
 
 const EditScreen = ({ navigation, route }: Props) => {
-  const {
-    name,
-    price,
-    description,
-    totalStock,
-    id,
-    user: itemUser,
-  } = route.params;
+  const { name, price, description, totalStock, id, user } = route.params;
 
-  const { user, editInventoryItem } = useAppContext();
+  const { editInventoryItem, removeItemFromInventory } = useAppContext();
 
   const initialValues: IFormValues = {
     name,
@@ -52,32 +46,61 @@ const EditScreen = ({ navigation, route }: Props) => {
     description,
   };
 
-  const handleFormAction = async (
-    values: IFormValues,
-    actions: FormikHelpers<IFormValues>
-  ) => {
-    try {
-      await editInventoryItem({
-        name: values.name.toLowerCase(),
-        description: values.description.toLowerCase(),
-        price: Number(values.price),
-        totalStock: Number(values.totalStock),
-        id,
-        user: itemUser,
-      });
+  const handleFormAction = useCallback(
+    async (values: IFormValues, actions: FormikHelpers<IFormValues>) => {
+      try {
+        const res = await editInventoryItem({
+          name: values.name.toLowerCase(),
+          description: values.description.toLowerCase(),
+          price: Number(values.price),
+          totalStock: Number(values.totalStock),
+          id,
+          user,
+        });
 
-      Toast.show({
-        type: 'success',
-        text1: 'Item edited successfully',
-      });
+        if (res) {
+          Toast.show({
+            type: 'error',
+            text1: res,
+          });
+        } else {
+          Toast.show({
+            text1: 'Item edited successfully',
+          });
 
-      navigation.navigate('Home');
+          navigation.navigate('Home');
 
-      actions.resetForm();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+          actions.resetForm();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    []
+  );
+
+  const confirmDelete = useCallback(
+    () =>
+      Alert.alert('Delete item', 'You are about to delete this item', [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        { text: 'Confirm', onPress: handleDelete },
+      ]),
+    []
+  );
+
+  const handleDelete = useCallback(async () => {
+    await removeItemFromInventory(id);
+
+    Toast.show({
+      text1: 'Item deleted successfully',
+    });
+
+    navigation.navigate('Home');
+  }, []);
 
   const navBack = useCallback(() => {
     navigation.goBack();
@@ -164,6 +187,9 @@ const EditScreen = ({ navigation, route }: Props) => {
 
       <View style={styles.btnContainer}>
         <AppBtn onPress={handleSubmit}>Edit item</AppBtn>
+        <AppBtn onPress={confirmDelete} style={styles.deleteBtn}>
+          Delete item
+        </AppBtn>
       </View>
     </SafeAreaView>
   );
@@ -207,6 +233,10 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 2,
     paddingHorizontal: 8,
+  },
+  deleteBtn: {
+    backgroundColor: theme.colors.secondaryRed,
+    marginTop: 12,
   },
 });
 

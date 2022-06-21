@@ -1,8 +1,14 @@
 import { NavigationProp } from '@react-navigation/native';
 import { FormikHelpers, useFormik } from 'formik';
 import { customAlphabet } from 'nanoid/non-secure';
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback } from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import AppBtn from '../components/AppBtn';
 import AppInput from '../components/AppInput';
@@ -11,6 +17,7 @@ import { useAppContext } from '../context/AppContext';
 import { StackParamList } from '../types/stack';
 import { createItemSchema } from '../validation';
 import Toast from 'react-native-toast-message';
+import { theme } from '../theme/theme';
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 
@@ -35,32 +42,42 @@ const CreateScreen = ({ navigation }: Props) => {
     description: '',
   };
 
-  const handleFormAction = async (
-    values: IFormValues,
-    actions: FormikHelpers<IFormValues>
-  ) => {
-    try {
-      await addItemToInventory({
-        name: values.name.toLowerCase(),
-        description: values.description.toLowerCase(),
-        price: Number(values.price),
-        totalStock: Number(values.totalStock),
-        id: nanoid(),
-        user: user?.email as string,
-      });
+  const handleFormAction = useCallback(
+    async (values: IFormValues, actions: FormikHelpers<IFormValues>) => {
+      try {
+        const res = await addItemToInventory({
+          name: values.name.toLowerCase(),
+          description: values.description.toLowerCase(),
+          price: Number(values.price),
+          totalStock: Number(values.totalStock),
+          id: nanoid(),
+          user: user?.email as string,
+        });
 
-      Toast.show({
-        type: 'success',
-        text1: 'Item added successfully',
-      });
+        if (res) {
+          Toast.show({
+            type: 'error',
+            text1: res,
+          });
+        } else {
+          Toast.show({
+            text1: 'Item added successfully',
+          });
 
-      navigation.navigate('Home');
+          navigation.navigate('Home');
 
-      actions.resetForm();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+          actions.resetForm();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    []
+  );
+
+  const navBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
 
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
@@ -71,6 +88,13 @@ const CreateScreen = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.backBtnView}>
+        <TouchableOpacity style={styles.backBtn} onPress={navBack}>
+          <AppText color="white" size={12}>
+            Back
+          </AppText>
+        </TouchableOpacity>
+      </View>
       <View style={styles.topBar}>
         <AppText variant="bold" size={20}>
           Add item to inventory
@@ -164,6 +188,21 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     marginTop: 'auto',
+  },
+  backBtnView: {
+    position: 'absolute',
+    top: 20,
+    left: 16,
+    borderRadius: 4,
+    backgroundColor: theme.colors.primary,
+  },
+  backBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%',
+    paddingVertical: 2,
+    paddingHorizontal: 8,
   },
 });
 
