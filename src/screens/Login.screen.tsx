@@ -1,4 +1,3 @@
-// import { NavigationProp } from '@react-navigation/native';
 import { FormikHelpers, useFormik } from 'formik';
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
@@ -9,11 +8,7 @@ import AppText from '../components/AppText';
 import { useAppContext } from '../context/AppContext';
 import { theme } from '../theme/theme';
 import { loginSchema } from '../validation';
-// import { StackParamList } from '../types/stack';
-
-// type Props = {
-//   navigation: NavigationProp<StackParamList, 'Login'>;
-// };
+import Toast from 'react-native-toast-message';
 
 interface IFormValues {
   email: string;
@@ -38,9 +33,20 @@ const LoginScreen = () => {
         password: values.password,
       });
 
-      actions.resetForm();
+      if (res) {
+        Toast.show({
+          type: 'error',
+          text1: res,
+        });
+      } else {
+        Toast.show({
+          type: 'success',
+          text1: 'Login successful',
+        });
+        actions.resetForm();
+      }
     } catch (error) {
-      console.log(error);
+      // console.log(typeof error);
     }
   };
 

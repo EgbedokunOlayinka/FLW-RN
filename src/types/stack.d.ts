@@ -1,6 +1,8 @@
+import { IInventoryItem } from '.';
+
 export type StackParamList = {
   Login: undefined;
   Home: undefined;
-  Edit: undefined;
+  Edit: IInventoryItem;
   Create: undefined;
 };

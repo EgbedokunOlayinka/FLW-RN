@@ -10,6 +10,7 @@ import AppText from '../components/AppText';
 import { useAppContext } from '../context/AppContext';
 import { StackParamList } from '../types/stack';
 import { createItemSchema } from '../validation';
+import Toast from 'react-native-toast-message';
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 
@@ -39,13 +40,18 @@ const CreateScreen = ({ navigation }: Props) => {
     actions: FormikHelpers<IFormValues>
   ) => {
     try {
-      const res = await addItemToInventory({
+      await addItemToInventory({
         name: values.name.toLowerCase(),
         description: values.description.toLowerCase(),
         price: Number(values.price),
         totalStock: Number(values.totalStock),
         id: nanoid(),
         user: user?.email as string,
+      });
+
+      Toast.show({
+        type: 'success',
+        text1: 'Item added successfully',
       });
 
       navigation.navigate('Home');

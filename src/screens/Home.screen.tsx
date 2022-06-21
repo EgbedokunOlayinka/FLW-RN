@@ -1,6 +1,7 @@
 import { NavigationProp } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 import {
+  FlatList,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -8,8 +9,10 @@ import {
   View,
 } from 'react-native';
 import AppText from '../components/AppText';
+import InventoryItem from '../components/InventoryItem';
 import { useAppContext } from '../context/AppContext';
 import { theme } from '../theme/theme';
+import { IInventoryItem } from '../types';
 import { StackParamList } from '../types/stack';
 
 type Props = {
@@ -21,6 +24,10 @@ const HomeScreen = ({ navigation }: Props) => {
 
   const navToCreate = useCallback(() => {
     navigation.navigate('Create');
+  }, []);
+
+  const navToEdit = useCallback((item: IInventoryItem) => {
+    navigation.navigate('Edit', item);
   }, []);
 
   return (
@@ -44,7 +51,7 @@ const HomeScreen = ({ navigation }: Props) => {
       </View>
 
       <View style={styles.middleBar}>
-        <AppText variant="bold" size={24}>
+        <AppText variant="bold" size={20}>
           Your inventory
         </AppText>
         <AppText>
@@ -53,7 +60,17 @@ const HomeScreen = ({ navigation }: Props) => {
       </View>
 
       {inventory.length > 0 ? (
-        inventory.map((item) => <Text key={item.name}>{item.name}</Text>)
+        <View style={styles.listContainer}>
+          <FlatList
+            data={inventory}
+            renderItem={({ item }) => (
+              <InventoryItem item={item} clickAction={navToEdit} />
+            )}
+            keyExtractor={(item) => item.id}
+            style={styles.list}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
+          />
+        </View>
       ) : (
         <View style={styles.noItemsView}>
           <AppText style={styles.noItemsViewText} size={14}>
@@ -97,6 +114,7 @@ const styles = StyleSheet.create({
     right: 16,
     backgroundColor: theme.colors.primary,
     elevation: 1,
+    zIndex: 2,
   },
   addBtn: {
     justifyContent: 'center',
@@ -115,6 +133,18 @@ const styles = StyleSheet.create({
   noItemsViewText: {
     textAlign: 'center',
     width: '90%',
+  },
+  listContainer: {
+    marginTop: 12,
+    flex: 1,
+  },
+  list: {
+    marginTop: 8,
+  },
+  separator: {
+    marginBottom: 4,
+    height: 1,
+    backgroundColor: theme.colors.customGreyTwo,
   },
 });
 

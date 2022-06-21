@@ -15,7 +15,7 @@ const inventoryKey = 'my-app-inventory';
 type AppContextType = {
   inventory: IInventoryItem[];
   user: IUser | null;
-  loginUser: (val: IUser) => Promise<void>;
+  loginUser: (val: IUser) => Promise<void | string>;
   logoutUser: () => void;
   addItemToInventory: (val: IInventoryItem) => Promise<void>;
   editInventoryItem: (val: IInventoryItem) => Promise<void>;
@@ -57,7 +57,7 @@ export const AppProvider: React.FC = ({ children }) => {
         }
       } catch (error) {}
     },
-    []
+    [user, inventory]
   );
 
   const getCurrentUserFromStorage =
@@ -105,7 +105,7 @@ export const AppProvider: React.FC = ({ children }) => {
   }, []);
 
   const loginUser = useCallback(
-    async (val: IUser) => {
+    async (val: IUser): Promise<string | void> => {
       try {
         // get users array from local storage
         const users = await getUsersFromStorage();
@@ -133,14 +133,14 @@ export const AppProvider: React.FC = ({ children }) => {
         if (userFound.password === val.password) {
           handleSetUser(val);
         } else {
-          Promise.reject('Incorrect email/password combination');
-          return;
+          // Promise.reject('Incorrect email/password combination');
+          return 'Incorrect email/password combination';
         }
       } catch (error) {
         // throw Error(error);
       }
     },
-    [user]
+    [user, inventory]
   );
 
   const logoutUser = useCallback(async () => {

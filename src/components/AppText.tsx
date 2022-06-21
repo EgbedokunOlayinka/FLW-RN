@@ -11,7 +11,7 @@ type Props = TextProps & {
 const AppText: React.FC<Props> = ({
   children,
   variant = 'regular',
-  color = 'black',
+  color = theme.colors.textDark,
   size = 14,
   style,
   ...props
@@ -35,7 +35,8 @@ const AppText: React.FC<Props> = ({
   return (
     <Text
       {...props}
-      style={[styles.text, fontWeight, fontColor, fontSize, style]}>
+      style={[styles.text, fontWeight, fontColor, fontSize, style]}
+    >
       {children}
     </Text>
   );
