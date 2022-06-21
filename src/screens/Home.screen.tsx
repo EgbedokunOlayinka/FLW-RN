@@ -47,11 +47,13 @@ const HomeScreen = ({ navigation }: Props) => {
         <AppText variant="bold" size={24}>
           Your inventory
         </AppText>
-        <AppText>{inventory.length} items</AppText>
+        <AppText>
+          {inventory.length} {inventory.length === 1 ? 'item' : 'items'}
+        </AppText>
       </View>
 
       {inventory.length > 0 ? (
-        <></>
+        inventory.map((item) => <Text key={item.name}>{item.name}</Text>)
       ) : (
         <View style={styles.noItemsView}>
           <AppText style={styles.noItemsViewText} size={14}>
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     position: 'relative',
+    backgroundColor: 'white',
   },
   topBar: {
     flexDirection: 'row',

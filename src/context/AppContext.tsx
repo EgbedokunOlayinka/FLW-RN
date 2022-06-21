@@ -46,7 +46,15 @@ export const AppProvider: React.FC = ({ children }) => {
         } else {
           await AsyncStorage.setItem(currentUserKey, JSON.stringify(val));
         }
+
         setUser(val);
+
+        const storedInventory = await getInventoryFromStorage();
+        if (storedInventory) {
+          setInventory(
+            storedInventory.filter((item) => item.user === val?.email)
+          );
+        }
       } catch (error) {}
     },
     []
@@ -96,67 +104,80 @@ export const AppProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  const loginUser = useCallback(async (val: IUser) => {
-    try {
-      // get users array from local storage
-      const users = await getUsersFromStorage();
-      let newUsersArr = [];
+  const loginUser = useCallback(
+    async (val: IUser) => {
+      try {
+        // get users array from local storage
+        const users = await getUsersFromStorage();
+        let newUsersArr = [];
 
-      // if it does not exist yet, create it and add the new user to it
-      if (!users) {
-        newUsersArr = [val];
-        await AsyncStorage.setItem(usersKey, JSON.stringify(newUsersArr));
-        handleSetUser(val);
-        return;
+        // if it does not exist yet, create it and add the new user to it
+        if (!users) {
+          newUsersArr = [val];
+          await AsyncStorage.setItem(usersKey, JSON.stringify(newUsersArr));
+          handleSetUser(val);
+          return;
+        }
+
+        const userFound = users.find((user) => user.email === val.email);
+
+        // if it is not an existing user, add the user to the users array
+        if (!userFound) {
+          newUsersArr = [...users, val];
+          await AsyncStorage.setItem(usersKey, JSON.stringify(newUsersArr));
+          handleSetUser(val);
+          return;
+        }
+
+        // if password is not correct, throw error
+        if (userFound.password === val.password) {
+          handleSetUser(val);
+        } else {
+          Promise.reject('Incorrect email/password combination');
+          return;
+        }
+      } catch (error) {
+        // throw Error(error);
       }
-
-      const userFound = users.find((user) => user.email === val.email);
-
-      // if it is not an existing user, add the user to the users array
-      if (!userFound) {
-        newUsersArr = [...users, val];
-        await AsyncStorage.setItem(usersKey, JSON.stringify(newUsersArr));
-        handleSetUser(val);
-        return;
-      }
-
-      // if password is not correct, throw error
-      if (userFound.password === val.password) {
-        handleSetUser(val);
-      } else {
-        Promise.reject('Incorrect email/password combination');
-        return;
-      }
-    } catch (error) {
-      // throw Error(error);
-    }
-  }, []);
+    },
+    [user]
+  );
 
   const logoutUser = useCallback(async () => {
     await AsyncStorage.removeItem(currentUserKey);
     setUser(null);
-  }, []);
+    setInventory([]);
+  }, [user, inventory]);
 
-  const addItemToInventory = useCallback(async (val: IInventoryItem) => {
-    const newInventory = [...inventory, val];
-    await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
-    setInventory(newInventory);
-  }, []);
+  const addItemToInventory = useCallback(
+    async (val: IInventoryItem) => {
+      const newInventory = [...inventory, val];
+      await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
+      setInventory(newInventory);
+    },
+    [inventory]
+  );
 
-  const removeItemFromInventory = useCallback(async (val: string) => {
-    // filter the item from the inventory by its ID
-    const newInventory = [...inventory].filter((item) => item.id !== val);
-    await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
-    setInventory(newInventory);
-  }, []);
+  const removeItemFromInventory = useCallback(
+    async (val: string) => {
+      // filter the item from the inventory by its ID
+      const newInventory = [...inventory].filter((item) => item.id !== val);
+      await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
+      setInventory(newInventory);
+    },
+    [inventory]
+  );
 
-  const editInventoryItem = useCallback(async (val: IInventoryItem) => {
-    const newInventory = [...inventory].map((item) =>
-      item.id === val.id ? val : item
-    );
-    await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
-    setInventory(newInventory);
-  }, []);
+  const editInventoryItem = useCallback(
+    async (val: IInventoryItem) => {
+      const newInventory = [...inventory].map((item) =>
+        item.id === val.id ? val : item
+      );
+      await AsyncStorage.setItem(inventoryKey, JSON.stringify(newInventory));
+      setInventory(newInventory);
+    },
+    [inventory]
+  );
 
   const loadAppDataFromStorage = useCallback(async () => {
     try {

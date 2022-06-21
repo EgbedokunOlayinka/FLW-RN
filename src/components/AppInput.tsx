@@ -25,7 +25,7 @@ const AppInput = ({ style, label, error, errorText, ...props }: Props) => {
       <TextInput
         style={[styles.input, borderColor, style]}
         {...props}
-        placeholderTextColor={'grey'}
+        placeholderTextColor={'silver'}
       />
       {errorText ? (
         <AppText color={theme.colors.error} size={12} style={styles.errorText}>
@@ -40,16 +40,17 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: 'transparent',
     borderWidth: 1,
-    // borderColor: theme.colors.primaryLight,
     borderRadius: 8,
     fontSize: 14,
-    padding: 18,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    fontFamily: theme.fonts.regular,
   },
   label: {
-    marginBottom: 8,
+    marginBottom: 6,
   },
   errorText: {
-    marginTop: 6,
+    marginTop: 4,
   },
 });
 

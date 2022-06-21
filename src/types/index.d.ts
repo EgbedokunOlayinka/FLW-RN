@@ -2,7 +2,7 @@ export interface IInventoryItem {
   name: string;
   price: number;
   totalStock: number;
-  description: number;
+  description: string;
   user: string;
   id: string;
 }

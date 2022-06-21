@@ -33,7 +33,7 @@ const LoginScreen = () => {
     actions: FormikHelpers<IFormValues>
   ) => {
     try {
-      const res = loginUser({
+      const res = await loginUser({
         email: values.email.toLowerCase(),
         password: values.password,
       });
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 16,
+    backgroundColor: 'white',
   },
   scrollContainer: {
     flexGrow: 1,
