@@ -1,6 +1,5 @@
 import { NavigationProp, RouteProp } from '@react-navigation/native';
 import { FormikHelpers, useFormik } from 'formik';
-import { customAlphabet } from 'nanoid/non-secure';
 import React, { useCallback } from 'react';
 import {
   Alert,
@@ -19,8 +18,6 @@ import { StackParamList } from '../types/stack';
 import { createItemSchema } from '../validation';
 import Toast from 'react-native-toast-message';
 import { theme } from '../theme/theme';
-
-const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 
 type Props = {
   navigation: NavigationProp<StackParamList, 'Edit'>;
@@ -187,7 +184,11 @@ const EditScreen = ({ navigation, route }: Props) => {
 
       <View style={styles.btnContainer}>
         <AppBtn onPress={handleSubmit}>Edit item</AppBtn>
-        <AppBtn onPress={confirmDelete} style={styles.deleteBtn}>
+        <AppBtn
+          onPress={confirmDelete}
+          style={styles.deleteBtn}
+          testID="EditScreen.DeleteButton"
+        >
           Delete item
         </AppBtn>
       </View>

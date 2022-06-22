@@ -145,7 +145,6 @@ export const AppProvider: React.FC = ({ children }) => {
 
   const logoutUser = useCallback(async () => {
     await AsyncStorage.removeItem(currentUserKey);
-    // await AsyncStorage.removeItem(inventoryKey);
 
     setUser(null);
     setInventory([]);
@@ -165,8 +164,6 @@ export const AppProvider: React.FC = ({ children }) => {
       const mergedInventory = oldInventory
         ? [...oldInventory, val]
         : newInventory;
-
-      // console.log({ mergedInventory });
 
       await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
 
