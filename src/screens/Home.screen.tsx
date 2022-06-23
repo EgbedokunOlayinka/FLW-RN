@@ -32,57 +32,59 @@ const HomeScreen = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.addBtnView}>
-        <TouchableOpacity style={styles.addBtn} onPress={navToCreate}>
-          <AppText color="white" size={30} style={styles.addBtnText}>
-            +
-          </AppText>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.topBar}>
-        <AppText variant="bold" size={16}>
-          {user?.email}
-        </AppText>
-        <TouchableOpacity style={styles.logoutBtn} onPress={logoutUser}>
-          <AppText color="white" variant="bold">
-            LOGOUT
-          </AppText>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.middleBar}>
-        <AppText variant="bold" size={20}>
-          Your inventory
-        </AppText>
-        <AppText>
-          {inventory.length} {inventory.length === 1 ? 'item' : 'items'}
-        </AppText>
-      </View>
-
-      {inventory.length > 0 ? (
-        <View style={styles.listContainer}>
-          <FlatList
-            data={inventory}
-            renderItem={({ item }) => (
-              <InventoryItem
-                item={item}
-                clickAction={navToEdit}
-                testID="inventory item"
-              />
-            )}
-            keyExtractor={(item) => item.id}
-            style={styles.list}
-            ItemSeparatorComponent={() => <View style={styles.separator} />}
-          />
+      <View style={styles.containerView}>
+        <View style={styles.addBtnView}>
+          <TouchableOpacity style={styles.addBtn} onPress={navToCreate}>
+            <AppText color="white" size={30} style={styles.addBtnText}>
+              +
+            </AppText>
+          </TouchableOpacity>
         </View>
-      ) : (
-        <View style={styles.noItemsView}>
-          <AppText style={styles.noItemsViewText} size={14}>
-            You currently have no items in your inventory. Click the button at
-            the bottom-right corner of the screen to add your first item!
+        <View style={styles.topBar}>
+          <AppText variant="bold" size={16}>
+            {user?.email}
+          </AppText>
+          <TouchableOpacity style={styles.logoutBtn} onPress={logoutUser}>
+            <AppText color="white" variant="bold">
+              LOGOUT
+            </AppText>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.middleBar}>
+          <AppText variant="bold" size={20}>
+            Your inventory
+          </AppText>
+          <AppText>
+            {inventory.length} {inventory.length === 1 ? 'item' : 'items'}
           </AppText>
         </View>
-      )}
+
+        {inventory.length > 0 ? (
+          <View style={styles.listContainer}>
+            <FlatList
+              data={inventory}
+              renderItem={({ item }) => (
+                <InventoryItem
+                  item={item}
+                  clickAction={navToEdit}
+                  testID="inventory item"
+                />
+              )}
+              keyExtractor={(item) => item.id}
+              style={styles.list}
+              ItemSeparatorComponent={() => <View style={styles.separator} />}
+            />
+          </View>
+        ) : (
+          <View style={styles.noItemsView}>
+            <AppText style={styles.noItemsViewText} size={14}>
+              You currently have no items in your inventory. Click the button at
+              the bottom-right corner of the screen to add your first item!
+            </AppText>
+          </View>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -90,9 +92,13 @@ const HomeScreen = ({ navigation }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     position: 'relative',
     backgroundColor: 'white',
+  },
+  containerView: {
+    flex: 1,
+    padding: 16,
+    position: 'relative',
   },
   topBar: {
     flexDirection: 'row',

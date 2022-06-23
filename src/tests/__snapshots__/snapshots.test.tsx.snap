@@ -1,0 +1,1325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Screens should render correctly create screen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "position": "relative",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 16,
+        "position": "relative",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#0084FF",
+          "borderRadius": 4,
+          "left": 16,
+          "position": "absolute",
+          "top": 20,
+          "zIndex": 1,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 12,
+              },
+              undefined,
+            ]
+          }
+        >
+          Back
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-SemiBold",
+            },
+            Object {
+              "color": "#083061",
+            },
+            Object {
+              "fontSize": 20,
+            },
+            undefined,
+          ]
+        }
+      >
+        Add item to inventory
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Item name
+        </Text>
+        <TextInput
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="Bags"
+          placeholderTextColor="silver"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Total stock
+        </Text>
+        <TextInput
+          keyboardType="number-pad"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="20"
+          placeholderTextColor="silver"
+          returnKeyType="done"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Price(₦)
+        </Text>
+        <TextInput
+          keyboardType="number-pad"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="2000"
+          placeholderTextColor="silver"
+          returnKeyType="done"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Item description
+        </Text>
+        <TextInput
+          multiline={true}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="Brand new black bags"
+          placeholderTextColor="silver"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              Object {
+                "minHeight": 100,
+                "textAlignVertical": "top",
+              },
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginTop": "auto",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0084FF",
+            "borderRadius": 8,
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingVertical": 16,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-SemiBold",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 18,
+              },
+              undefined,
+            ]
+          }
+        >
+          Add item
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
+
+exports[`Screens should render correctly edit screen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "padding": 16,
+      "position": "relative",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 16,
+        "position": "relative",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#0084FF",
+          "borderRadius": 4,
+          "left": 16,
+          "position": "absolute",
+          "top": 20,
+          "zIndex": 1,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 12,
+              },
+              undefined,
+            ]
+          }
+        >
+          Back
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-SemiBold",
+            },
+            Object {
+              "color": "#083061",
+            },
+            Object {
+              "fontSize": 20,
+            },
+            undefined,
+          ]
+        }
+      >
+        Edit inventory item
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Item name
+        </Text>
+        <TextInput
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="Bags"
+          placeholderTextColor="silver"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Total stock
+        </Text>
+        <TextInput
+          keyboardType="number-pad"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="20"
+          placeholderTextColor="silver"
+          returnKeyType="done"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value="undefined"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Price(₦)
+        </Text>
+        <TextInput
+          keyboardType="number-pad"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="2000"
+          placeholderTextColor="silver"
+          returnKeyType="done"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value="undefined"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Item description
+        </Text>
+        <TextInput
+          multiline={true}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="Brand new black bags"
+          placeholderTextColor="silver"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              Object {
+                "minHeight": 100,
+                "textAlignVertical": "top",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginTop": "auto",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0084FF",
+            "borderRadius": 8,
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingVertical": 16,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-SemiBold",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 18,
+              },
+              undefined,
+            ]
+          }
+        >
+          Edit item
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#EA3333",
+            "borderRadius": 8,
+            "justifyContent": "center",
+            "marginTop": 12,
+            "opacity": 1,
+            "paddingVertical": 16,
+          }
+        }
+        testID="EditScreen.DeleteButton"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-SemiBold",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 18,
+              },
+              undefined,
+            ]
+          }
+        >
+          Delete item
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
+
+exports[`Screens should render correctly home screen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "position": "relative",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 16,
+        "position": "relative",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#0084FF",
+          "borderRadius": 50,
+          "bottom": 50,
+          "elevation": 1,
+          "height": 50,
+          "position": "absolute",
+          "right": 16,
+          "width": 50,
+          "zIndex": 2,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 30,
+              },
+              Object {
+                "marginTop": 4,
+              },
+            ]
+          }
+        >
+          +
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-SemiBold",
+            },
+            Object {
+              "color": "#083061",
+            },
+            Object {
+              "fontSize": 16,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#EA3333",
+            "borderRadius": 4,
+            "opacity": 1,
+            "paddingHorizontal": 12,
+            "paddingVertical": 6,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-SemiBold",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              undefined,
+            ]
+          }
+        >
+          LOGOUT
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "marginTop": 16,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-SemiBold",
+            },
+            Object {
+              "color": "#083061",
+            },
+            Object {
+              "fontSize": 20,
+            },
+            undefined,
+          ]
+        }
+      >
+        Your inventory
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-Regular",
+            },
+            Object {
+              "color": "#083061",
+            },
+            Object {
+              "fontSize": 14,
+            },
+            undefined,
+          ]
+        }
+      >
+        0
+         
+        items
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-Regular",
+            },
+            Object {
+              "color": "#083061",
+            },
+            Object {
+              "fontSize": 14,
+            },
+            Object {
+              "textAlign": "center",
+              "width": "90%",
+            },
+          ]
+        }
+      >
+        You currently have no items in your inventory. Click the button at the bottom-right corner of the screen to add your first item!
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
+
+exports[`Screens should render correctly login screen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "black",
+        },
+        Object {
+          "fontFamily": "Poppins-SemiBold",
+        },
+        Object {
+          "color": "#0084FF",
+        },
+        Object {
+          "fontSize": 24,
+        },
+        Object {
+          "marginTop": 16,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    BLUEMOON SOLUTIONS
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "black",
+        },
+        Object {
+          "fontFamily": "Poppins-SemiBold",
+        },
+        Object {
+          "color": "#083061",
+        },
+        Object {
+          "fontSize": 20,
+        },
+        Object {
+          "marginTop": 16,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Sign in
+  </Text>
+  <View
+    style={
+      Object {
+        "marginTop": 32,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Email address
+        </Text>
+        <TextInput
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholder="test@mail.com"
+          placeholderTextColor="silver"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 16,
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-Regular",
+              },
+              Object {
+                "color": "#083061",
+              },
+              Object {
+                "fontSize": 14,
+              },
+              Object {
+                "marginBottom": 6,
+              },
+            ]
+          }
+        >
+          Password
+        </Text>
+        <TextInput
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          placeholderTextColor="silver"
+          secureTextEntry={true}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+                "paddingHorizontal": 18,
+                "paddingVertical": 12,
+              },
+              Object {
+                "borderColor": "rgba(0, 132, 255, 0.3)",
+              },
+              undefined,
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "marginTop": "auto",
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#0084FF",
+          "borderRadius": 8,
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "black",
+            },
+            Object {
+              "fontFamily": "Poppins-SemiBold",
+            },
+            Object {
+              "color": "white",
+            },
+            Object {
+              "fontSize": 18,
+            },
+            undefined,
+          ]
+        }
+      >
+        Login
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;

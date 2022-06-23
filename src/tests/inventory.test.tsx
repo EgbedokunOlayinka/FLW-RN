@@ -93,4 +93,25 @@ describe('add item, remove item, and edit item', () => {
 
     expect(lastRes).toEqual([testInventoryItem, editedItem]);
   });
+
+  test('get the inventory for the user that is stored in the async storage', async () => {
+    const testUser = { email: 'test@mail.com', password: '1234' };
+    await AsyncStorage.setItem(currentUserKey, JSON.stringify(testUser));
+    await AsyncStorage.setItem(
+      inventoryKey,
+      JSON.stringify([testInventoryItem])
+    );
+
+    const inventoryRes = await getInventoryFromStorage();
+    const userRes = await getCurrentUserFromStorage();
+
+    expect(inventoryRes).toEqual([testInventoryItem]);
+    expect(userRes).toEqual(testUser);
+
+    const userInventory = inventoryRes?.filter(
+      (item) => item.user === userRes?.email
+    );
+
+    expect(userInventory).toEqual([testInventoryItem]);
+  });
 });

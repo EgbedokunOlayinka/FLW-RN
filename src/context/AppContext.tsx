@@ -229,14 +229,6 @@ export const AppProvider: React.FC = ({ children }) => {
       } else {
         setInventory([]);
       }
-
-      // if (storedInventory) {
-      //   setInventory(
-      //     !storedCurrentUser
-      //       ? []
-      //       : inventory.filter((item) => item.user === storedCurrentUser.email)
-      //   );
-      // }
     } catch (error) {}
   }, []);
 

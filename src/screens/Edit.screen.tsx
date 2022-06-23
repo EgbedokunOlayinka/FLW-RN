@@ -112,85 +112,89 @@ const EditScreen = ({ navigation, route }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.backBtnView}>
-        <TouchableOpacity style={styles.backBtn} onPress={navBack}>
-          <AppText color="white" size={12}>
-            Back
+      <View style={styles.containerView}>
+        <View style={styles.backBtnView}>
+          <TouchableOpacity style={styles.backBtn} onPress={navBack}>
+            <AppText color="white" size={12}>
+              Back
+            </AppText>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.topBar}>
+          <AppText variant="bold" size={20}>
+            Edit inventory item
           </AppText>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.topBar}>
-        <AppText variant="bold" size={20}>
-          Edit inventory item
-        </AppText>
-      </View>
+        </View>
 
-      <KeyboardAwareScrollView style={styles.scrollContainer}>
-        <View style={styles.input}>
-          <AppInput
-            placeholder="Bags"
-            label="Item name"
-            value={values.name}
-            onChangeText={handleChange('name')}
-            onBlur={handleBlur('name')}
-            error={errors.name && touched.name ? true : false}
-            errorText={errors.name && touched.name ? errors.name : ''}
-          />
-        </View>
-        <View style={styles.input}>
-          <AppInput
-            label="Total stock"
-            placeholder="20"
-            value={values.totalStock}
-            onChangeText={handleChange('totalStock')}
-            onBlur={handleBlur('totalStock')}
-            error={errors.totalStock && touched.totalStock ? true : false}
-            errorText={
-              errors.totalStock && touched.totalStock ? errors.totalStock : ''
-            }
-            returnKeyType="done"
-            keyboardType="number-pad"
-          />
-        </View>
-        <View style={styles.input}>
-          <AppInput
-            label="Price(₦)"
-            placeholder="2000"
-            value={values.price}
-            onChangeText={handleChange('price')}
-            onBlur={handleBlur('price')}
-            error={errors.price && touched.price ? true : false}
-            errorText={errors.price && touched.price ? errors.price : ''}
-            returnKeyType="done"
-            keyboardType="number-pad"
-          />
-        </View>
-        <View style={styles.input}>
-          <AppInput
-            placeholder="Brand new black bags"
-            label="Item description"
-            value={values.description}
-            onChangeText={handleChange('description')}
-            onBlur={handleBlur('description')}
-            error={errors.description && touched.description ? true : false}
-            errorText={
-              errors.description && touched.description
-                ? errors.description
-                : ''
-            }
-          />
-        </View>
-      </KeyboardAwareScrollView>
+        <KeyboardAwareScrollView style={styles.scrollContainer}>
+          <View style={styles.input}>
+            <AppInput
+              placeholder="Bags"
+              label="Item name"
+              value={values.name}
+              onChangeText={handleChange('name')}
+              onBlur={handleBlur('name')}
+              error={errors.name && touched.name ? true : false}
+              errorText={errors.name && touched.name ? errors.name : ''}
+            />
+          </View>
+          <View style={styles.input}>
+            <AppInput
+              label="Total stock"
+              placeholder="20"
+              value={values.totalStock}
+              onChangeText={handleChange('totalStock')}
+              onBlur={handleBlur('totalStock')}
+              error={errors.totalStock && touched.totalStock ? true : false}
+              errorText={
+                errors.totalStock && touched.totalStock ? errors.totalStock : ''
+              }
+              returnKeyType="done"
+              keyboardType="number-pad"
+            />
+          </View>
+          <View style={styles.input}>
+            <AppInput
+              label="Price(₦)"
+              placeholder="2000"
+              value={values.price}
+              onChangeText={handleChange('price')}
+              onBlur={handleBlur('price')}
+              error={errors.price && touched.price ? true : false}
+              errorText={errors.price && touched.price ? errors.price : ''}
+              returnKeyType="done"
+              keyboardType="number-pad"
+            />
+          </View>
+          <View style={styles.input}>
+            <AppInput
+              placeholder="Brand new black bags"
+              label="Item description"
+              value={values.description}
+              onChangeText={handleChange('description')}
+              onBlur={handleBlur('description')}
+              error={errors.description && touched.description ? true : false}
+              errorText={
+                errors.description && touched.description
+                  ? errors.description
+                  : ''
+              }
+              multiline
+              style={styles.textArea}
+            />
+          </View>
+        </KeyboardAwareScrollView>
 
-      <View style={styles.btnContainer}>
-        <AppBtn onPress={handleSubmit}>Edit item</AppBtn>
-        <AppBtn
-          onPress={confirmDelete}
-          style={styles.deleteBtn}
-          testID="EditScreen.DeleteButton"
-        >
-          Delete item
-        </AppBtn>
+        <View style={styles.btnContainer}>
+          <AppBtn onPress={handleSubmit}>Edit item</AppBtn>
+          <AppBtn
+            onPress={confirmDelete}
+            style={styles.deleteBtn}
+            testID="EditScreen.DeleteButton"
+          >
+            Delete item
+          </AppBtn>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -202,6 +206,11 @@ const styles = StyleSheet.create({
     padding: 16,
     position: 'relative',
     backgroundColor: 'white',
+  },
+  containerView: {
+    flex: 1,
+    padding: 16,
+    position: 'relative',
   },
   topBar: {
     alignItems: 'center',
@@ -226,6 +235,7 @@ const styles = StyleSheet.create({
     left: 16,
     borderRadius: 4,
     backgroundColor: theme.colors.primary,
+    zIndex: 1,
   },
   backBtn: {
     justifyContent: 'center',
@@ -238,6 +248,10 @@ const styles = StyleSheet.create({
   deleteBtn: {
     backgroundColor: theme.colors.secondaryRed,
     marginTop: 12,
+  },
+  textArea: {
+    textAlignVertical: 'top',
+    minHeight: 100,
   },
 });
 
