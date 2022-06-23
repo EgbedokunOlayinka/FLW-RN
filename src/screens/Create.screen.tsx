@@ -1,6 +1,5 @@
 import { NavigationProp } from '@react-navigation/native';
 import { FormikHelpers, useFormik } from 'formik';
-import { customAlphabet } from 'nanoid/non-secure';
 import React, { useCallback } from 'react';
 import {
   SafeAreaView,
@@ -18,8 +17,7 @@ import { StackParamList } from '../types/stack';
 import { createItemSchema } from '../validation';
 import Toast from 'react-native-toast-message';
 import { theme } from '../theme/theme';
-
-const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
+import generateID from '../helpers/generateID';
 
 type Props = {
   navigation: NavigationProp<StackParamList, 'Create'>;
@@ -50,7 +48,7 @@ const CreateScreen = ({ navigation }: Props) => {
           description: values.description.toLowerCase(),
           price: Number(values.price),
           totalStock: Number(values.totalStock),
-          id: nanoid(),
+          id: generateID(),
           user: user?.email as string,
         });
 

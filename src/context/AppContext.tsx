@@ -8,11 +8,11 @@ import React, {
 import { IInventoryItem, IUser } from '../types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const usersKey = 'my-app-users';
-const currentUserKey = 'my-app-current-user';
-const inventoryKey = 'my-app-inventory';
+export const usersKey = 'my-app-users';
+export const currentUserKey = 'my-app-current-user';
+export const inventoryKey = 'my-app-inventory';
 
-type AppContextType = {
+export type AppContextType = {
   inventory: IInventoryItem[];
   user: IUser | null;
   loginUser: (val: IUser) => Promise<void | string>;
@@ -32,7 +32,50 @@ const defaultValue = {
   removeItemFromInventory: async () => {},
 };
 
-const AppContext = createContext<AppContextType>(defaultValue);
+export const getCurrentUserFromStorage = async (): Promise<IUser | null> => {
+  try {
+    const data = await AsyncStorage.getItem(currentUserKey);
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return null;
+    }
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getUsersFromStorage = async (): Promise<IUser[] | null> => {
+  try {
+    const data = await AsyncStorage.getItem(usersKey);
+
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return null;
+    }
+  } catch (error) {
+    return null;
+  }
+};
+
+export const getInventoryFromStorage = async (): Promise<
+  IInventoryItem[] | null
+> => {
+  try {
+    const data = await AsyncStorage.getItem(inventoryKey);
+
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return null;
+    }
+  } catch (error) {
+    return null;
+  }
+};
+
+export const AppContext = createContext<AppContextType>(defaultValue);
 
 export const AppProvider: React.FC = ({ children }) => {
   const [inventory, setInventory] = useState<IInventoryItem[]>([]);
@@ -59,50 +102,6 @@ export const AppProvider: React.FC = ({ children }) => {
     },
     [user, inventory]
   );
-
-  const getCurrentUserFromStorage =
-    useCallback(async (): Promise<IUser | null> => {
-      try {
-        const data = await AsyncStorage.getItem(currentUserKey);
-        if (data) {
-          return JSON.parse(data);
-        } else {
-          return null;
-        }
-      } catch (error) {
-        return null;
-      }
-    }, []);
-
-  const getUsersFromStorage = useCallback(async (): Promise<IUser[] | null> => {
-    try {
-      const data = await AsyncStorage.getItem(usersKey);
-
-      if (data) {
-        return JSON.parse(data);
-      } else {
-        return null;
-      }
-    } catch (error) {
-      return null;
-    }
-  }, []);
-
-  const getInventoryFromStorage = useCallback(async (): Promise<
-    IInventoryItem[] | null
-  > => {
-    try {
-      const data = await AsyncStorage.getItem(inventoryKey);
-
-      if (data) {
-        return JSON.parse(data);
-      } else {
-        return null;
-      }
-    } catch (error) {
-      return null;
-    }
-  }, []);
 
   const loginUser = useCallback(
     async (val: IUser): Promise<string | void> => {

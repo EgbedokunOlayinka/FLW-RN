@@ -64,7 +64,11 @@ const HomeScreen = ({ navigation }: Props) => {
           <FlatList
             data={inventory}
             renderItem={({ item }) => (
-              <InventoryItem item={item} clickAction={navToEdit} />
+              <InventoryItem
+                item={item}
+                clickAction={navToEdit}
+                testID="inventory item"
+              />
             )}
             keyExtractor={(item) => item.id}
             style={styles.list}
