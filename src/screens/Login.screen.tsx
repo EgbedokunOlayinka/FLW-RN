@@ -62,50 +62,52 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAwareScrollView style={styles.scrollContainer}>
-        <AppText
-          style={styles.title}
-          variant="bold"
-          size={24}
-          color={theme.colors.primary}
-        >
-          BLUEMOON SOLUTIONS
-        </AppText>
+      <View style={styles.containerView}>
+        <KeyboardAwareScrollView style={styles.scrollContainer}>
+          <AppText
+            style={styles.title}
+            variant="bold"
+            size={24}
+            color={theme.colors.primary}
+          >
+            BLUEMOON SOLUTIONS
+          </AppText>
 
-        <AppText style={styles.sub} variant="bold" size={20}>
-          Sign in
-        </AppText>
+          <AppText style={styles.sub} variant="bold" size={20}>
+            Sign in
+          </AppText>
 
-        <View style={styles.inputContainer}>
-          <View style={styles.input}>
-            <AppInput
-              placeholder="test@mail.com"
-              label="Email address"
-              value={values.email}
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              error={errors.email && touched.email ? true : false}
-              errorText={errors.email && touched.email ? errors.email : ''}
-            />
+          <View style={styles.inputContainer}>
+            <View style={styles.input}>
+              <AppInput
+                placeholder="test@mail.com"
+                label="Email address"
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                error={errors.email && touched.email ? true : false}
+                errorText={errors.email && touched.email ? errors.email : ''}
+              />
+            </View>
+            <View style={styles.input}>
+              <AppInput
+                label="Password"
+                secureTextEntry
+                value={values.password}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                error={errors.password && touched.password ? true : false}
+                errorText={
+                  errors.password && touched.password ? errors.password : ''
+                }
+              />
+            </View>
           </View>
-          <View style={styles.input}>
-            <AppInput
-              label="Password"
-              secureTextEntry
-              value={values.password}
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-              error={errors.password && touched.password ? true : false}
-              errorText={
-                errors.password && touched.password ? errors.password : ''
-              }
-            />
-          </View>
+        </KeyboardAwareScrollView>
+
+        <View style={styles.btnContainer}>
+          <AppBtn onPress={handleSubmit}>Login</AppBtn>
         </View>
-      </KeyboardAwareScrollView>
-
-      <View style={styles.btnContainer}>
-        <AppBtn onPress={handleSubmit}>Login</AppBtn>
       </View>
     </SafeAreaView>
   );
@@ -116,6 +118,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 16,
     backgroundColor: 'white',
+  },
+  containerView: {
+    flex: 1,
+    padding: 16,
+    position: 'relative',
   },
   scrollContainer: {
     flexGrow: 1,

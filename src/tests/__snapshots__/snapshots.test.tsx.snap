@@ -1108,229 +1108,239 @@ exports[`Screens should render correctly login screen renders correctly 1`] = `
     }
   }
 >
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "black",
-        },
-        Object {
-          "fontFamily": "Poppins-SemiBold",
-        },
-        Object {
-          "color": "#0084FF",
-        },
-        Object {
-          "fontSize": 24,
-        },
-        Object {
-          "marginTop": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    BLUEMOON SOLUTIONS
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "black",
-        },
-        Object {
-          "fontFamily": "Poppins-SemiBold",
-        },
-        Object {
-          "color": "#083061",
-        },
-        Object {
-          "fontSize": 20,
-        },
-        Object {
-          "marginTop": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Sign in
-  </Text>
   <View
     style={
       Object {
-        "marginTop": 32,
+        "flex": 1,
+        "padding": 16,
+        "position": "relative",
       }
     }
   >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "black",
+          },
+          Object {
+            "fontFamily": "Poppins-SemiBold",
+          },
+          Object {
+            "color": "#0084FF",
+          },
+          Object {
+            "fontSize": 24,
+          },
+          Object {
+            "marginTop": 16,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      BLUEMOON SOLUTIONS
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "black",
+          },
+          Object {
+            "fontFamily": "Poppins-SemiBold",
+          },
+          Object {
+            "color": "#083061",
+          },
+          Object {
+            "fontSize": 20,
+          },
+          Object {
+            "marginTop": 16,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Sign in
+    </Text>
     <View
       style={
         Object {
-          "marginBottom": 16,
+          "marginTop": 32,
         }
       }
     >
-      <View>
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "black",
-              },
-              Object {
-                "fontFamily": "Poppins-Regular",
-              },
-              Object {
-                "color": "#083061",
-              },
-              Object {
-                "fontSize": 14,
-              },
-              Object {
-                "marginBottom": 6,
-              },
-            ]
-          }
-        >
-          Email address
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          placeholder="test@mail.com"
-          placeholderTextColor="silver"
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "color": "#083061",
-                "fontFamily": "Poppins-Regular",
-                "fontSize": 14,
-                "paddingHorizontal": 18,
-                "paddingVertical": 12,
-              },
-              Object {
-                "borderColor": "rgba(0, 132, 255, 0.3)",
-              },
-              undefined,
-            ]
-          }
-          value=""
-        />
-      </View>
-    </View>
-    <View
-      style={
-        Object {
-          "marginBottom": 16,
-        }
-      }
-    >
-      <View>
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "black",
-              },
-              Object {
-                "fontFamily": "Poppins-Regular",
-              },
-              Object {
-                "color": "#083061",
-              },
-              Object {
-                "fontSize": 14,
-              },
-              Object {
-                "marginBottom": 6,
-              },
-            ]
-          }
-        >
-          Password
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          placeholderTextColor="silver"
-          secureTextEntry={true}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "color": "#083061",
-                "fontFamily": "Poppins-Regular",
-                "fontSize": 14,
-                "paddingHorizontal": 18,
-                "paddingVertical": 12,
-              },
-              Object {
-                "borderColor": "rgba(0, 132, 255, 0.3)",
-              },
-              undefined,
-            ]
-          }
-          value=""
-        />
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
-        "marginTop": "auto",
-        "paddingHorizontal": 16,
-      }
-    }
-  >
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#0084FF",
-          "borderRadius": 8,
-          "justifyContent": "center",
-          "opacity": 1,
-          "paddingVertical": 16,
-        }
-      }
-    >
-      <Text
+      <View
         style={
-          Array [
-            Object {
-              "color": "black",
-            },
-            Object {
-              "fontFamily": "Poppins-SemiBold",
-            },
-            Object {
-              "color": "white",
-            },
-            Object {
-              "fontSize": 18,
-            },
-            undefined,
-          ]
+          Object {
+            "marginBottom": 16,
+          }
         }
       >
-        Login
-      </Text>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                },
+                Object {
+                  "fontFamily": "Poppins-Regular",
+                },
+                Object {
+                  "color": "#083061",
+                },
+                Object {
+                  "fontSize": 14,
+                },
+                Object {
+                  "marginBottom": 6,
+                },
+              ]
+            }
+          >
+            Email address
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            placeholder="test@mail.com"
+            placeholderTextColor="silver"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "color": "#083061",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 14,
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 12,
+                },
+                Object {
+                  "borderColor": "rgba(0, 132, 255, 0.3)",
+                },
+                undefined,
+              ]
+            }
+            value=""
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 16,
+          }
+        }
+      >
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                },
+                Object {
+                  "fontFamily": "Poppins-Regular",
+                },
+                Object {
+                  "color": "#083061",
+                },
+                Object {
+                  "fontSize": 14,
+                },
+                Object {
+                  "marginBottom": 6,
+                },
+              ]
+            }
+          >
+            Password
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            placeholderTextColor="silver"
+            secureTextEntry={true}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "color": "#083061",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 14,
+                  "paddingHorizontal": 18,
+                  "paddingVertical": 12,
+                },
+                Object {
+                  "borderColor": "rgba(0, 132, 255, 0.3)",
+                },
+                undefined,
+              ]
+            }
+            value=""
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "marginTop": "auto",
+          "paddingHorizontal": 16,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0084FF",
+            "borderRadius": 8,
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingVertical": 16,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "black",
+              },
+              Object {
+                "fontFamily": "Poppins-SemiBold",
+              },
+              Object {
+                "color": "white",
+              },
+              Object {
+                "fontSize": 18,
+              },
+              undefined,
+            ]
+          }
+        >
+          Login
+        </Text>
+      </View>
     </View>
   </View>
 </RCTSafeAreaView>

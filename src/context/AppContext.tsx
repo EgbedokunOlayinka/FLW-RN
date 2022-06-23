@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { IInventoryItem, IUser } from '../types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SplashScreen from 'react-native-splash-screen';
 
 export const usersKey = 'my-app-users';
 export const currentUserKey = 'my-app-current-user';
@@ -244,6 +245,8 @@ export const AppProvider: React.FC = ({ children }) => {
       } else {
         setInventory([]);
       }
+
+      SplashScreen.hide();
     } catch (error) {}
   }, []);
 

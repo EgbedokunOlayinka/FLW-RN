@@ -7,7 +7,7 @@ import HomeScreen from '../screens/Home.screen';
 
 const mockedNavigate = jest.fn();
 const mockedPush = jest.fn();
-const mockedParams = jest.mock('./testInventoryItem');
+const mockedParams = jest.mock('../testData/testInventoryItem');
 
 const mockedNavigation = { navigate: mockedNavigate, push: mockedPush };
 const mockedRoute = { params: mockedParams };
