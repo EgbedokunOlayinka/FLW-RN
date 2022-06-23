@@ -17,12 +17,14 @@ jest.spyOn(Alert, 'alert');
 // test that confirmation popup shows up when the delete item button is pressed
 describe('Pressing delete button', () => {
   it('shows confirmation popup alert', () => {
+    // get the edit screen
     const { getByTestId } = render(
       <EditScreen
         navigation={mockedNavigation as any}
         route={mockedRoute as any}
       />
     );
+
     // ensure the button exists
     expect(getByTestId('EditScreen.DeleteButton')).not.toBeNull();
     // fire the button press event

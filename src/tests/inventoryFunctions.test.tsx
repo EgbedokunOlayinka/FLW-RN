@@ -6,13 +6,32 @@ import {
   getInventoryFromStorage,
   inventoryKey,
 } from '../context/AppContext';
-import testInventoryItem from './testInventoryItem';
+import testInventoryItem from '../testData/testInventoryItem';
 
 beforeEach(async () => {
   await AsyncStorage.clear();
 });
 
-describe('add item, remove item, and edit item', () => {
+describe('getInventoryFromStorage function', () => {
+  it('should return an array of inventory items if the inventoryKey key is present in the async storage', async () => {
+    await AsyncStorage.setItem(
+      inventoryKey,
+      JSON.stringify([testInventoryItem])
+    );
+
+    const result = await getInventoryFromStorage();
+
+    expect(result).toEqual([testInventoryItem]);
+  });
+
+  it('should return null if the inventoryKey key is not present in the async storage', async () => {
+    const result = await getInventoryFromStorage();
+
+    expect(result).toBeNull();
+  });
+});
+
+describe('addItemToInventory function', () => {
   test('add item to async storage inventory if item name is unique', async () => {
     await AsyncStorage.setItem(inventoryKey, JSON.stringify([]));
 
@@ -20,6 +39,7 @@ describe('add item, remove item, and edit item', () => {
 
     expect(result).toEqual([]);
 
+    // item name should be unique
     const itemFound = result?.find(
       (item) => item.name === testInventoryItem.name
     );
@@ -31,7 +51,9 @@ describe('add item, remove item, and edit item', () => {
       JSON.stringify([result, itemFound])
     );
   });
+});
 
+describe('removeItemFromInventory function', () => {
   test('remove item from async storage when deleted by user', async () => {
     await AsyncStorage.setItem(
       inventoryKey,
@@ -50,7 +72,9 @@ describe('add item, remove item, and edit item', () => {
 
     expect(lastRes).toEqual([]);
   });
+});
 
+describe('editInventoryItem function', () => {
   test('edit an existing inventory item in the async storage', async () => {
     const oldItem = {
       name: 'old bags',
@@ -79,10 +103,12 @@ describe('add item, remove item, and edit item', () => {
 
     expect(result).toEqual([testInventoryItem, oldItem]);
 
+    // item name should be unique
     const itemFound = result?.find((item) => item.name === editedItem.name);
 
     expect(itemFound).toBeFalsy();
 
+    // carry out the actual edit
     const newRes = result?.map((item) =>
       item.id === editedItem.id ? editedItem : item
     );
@@ -92,26 +118,5 @@ describe('add item, remove item, and edit item', () => {
     const lastRes = await getInventoryFromStorage();
 
     expect(lastRes).toEqual([testInventoryItem, editedItem]);
-  });
-
-  test('get the inventory for the user that is stored in the async storage', async () => {
-    const testUser = { email: 'test@mail.com', password: '1234' };
-    await AsyncStorage.setItem(currentUserKey, JSON.stringify(testUser));
-    await AsyncStorage.setItem(
-      inventoryKey,
-      JSON.stringify([testInventoryItem])
-    );
-
-    const inventoryRes = await getInventoryFromStorage();
-    const userRes = await getCurrentUserFromStorage();
-
-    expect(inventoryRes).toEqual([testInventoryItem]);
-    expect(userRes).toEqual(testUser);
-
-    const userInventory = inventoryRes?.filter(
-      (item) => item.user === userRes?.email
-    );
-
-    expect(userInventory).toEqual([testInventoryItem]);
   });
 });
