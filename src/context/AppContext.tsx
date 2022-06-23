@@ -143,70 +143,87 @@ export const AppProvider: React.FC = ({ children }) => {
   );
 
   const logoutUser = useCallback(async () => {
-    await AsyncStorage.removeItem(currentUserKey);
+    try {
+      await AsyncStorage.removeItem(currentUserKey);
 
-    setUser(null);
-    setInventory([]);
+      setUser(null);
+      setInventory([]);
+    } catch (error) {}
   }, [user, inventory]);
 
   const addItemToInventory = useCallback(
     async (val: IInventoryItem): Promise<string | void> => {
-      // check if an item with the same name exists already
-      const itemFound = inventory.find((item) => item.name === val.name);
-      if (itemFound) {
-        return 'An item with the same name exists already';
-      }
+      try {
+        // check if an item with the same name exists already
+        const itemFound = inventory.find((item) => item.name === val.name);
+        if (itemFound) {
+          return 'An item with the same name exists already';
+        }
 
-      const newInventory = [...inventory, val];
-      const oldInventory = await getInventoryFromStorage();
+        const newInventory = [...inventory, val];
+        const oldInventory = await getInventoryFromStorage();
 
-      const mergedInventory = oldInventory
-        ? [...oldInventory, val]
-        : newInventory;
+        const mergedInventory = oldInventory
+          ? [...oldInventory, val]
+          : newInventory;
 
-      await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
+        await AsyncStorage.setItem(
+          inventoryKey,
+          JSON.stringify(mergedInventory)
+        );
 
-      setInventory(newInventory);
+        setInventory(newInventory);
+      } catch (error) {}
     },
     [inventory]
   );
 
   const removeItemFromInventory = useCallback(
     async (val: string) => {
-      // filter the item from the inventory by its ID
-      const newInventory = [...inventory].filter((item) => item.id !== val);
-      const oldInventory = await getInventoryFromStorage();
+      try {
+        // filter the item from the inventory by its ID
+        const newInventory = [...inventory].filter((item) => item.id !== val);
+        const oldInventory = await getInventoryFromStorage();
 
-      const mergedInventory = oldInventory
-        ? [...oldInventory].filter((item) => item.id !== val)
-        : newInventory;
+        const mergedInventory = oldInventory
+          ? [...oldInventory].filter((item) => item.id !== val)
+          : newInventory;
 
-      await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
+        await AsyncStorage.setItem(
+          inventoryKey,
+          JSON.stringify(mergedInventory)
+        );
 
-      setInventory(newInventory);
+        setInventory(newInventory);
+      } catch (error) {}
     },
     [inventory]
   );
 
   const editInventoryItem = useCallback(
     async (val: IInventoryItem): Promise<string | void> => {
-      // check if an item with the same name exists already
-      const itemFound = inventory.find((item) => item.name === val.name);
-      if (itemFound) {
-        return 'An item with the same name exists already';
-      }
+      try {
+        // check if an item with the same name exists already
+        const itemFound = inventory.find((item) => item.name === val.name);
+        if (itemFound) {
+          return 'An item with the same name exists already';
+        }
 
-      const newInventory = [...inventory].map((item) =>
-        item.id === val.id ? val : item
-      );
-      const oldInventory = await getInventoryFromStorage();
+        const newInventory = [...inventory].map((item) =>
+          item.id === val.id ? val : item
+        );
+        const oldInventory = await getInventoryFromStorage();
 
-      const mergedInventory = oldInventory
-        ? [...oldInventory, val]
-        : newInventory;
+        const mergedInventory = oldInventory
+          ? [...oldInventory, val]
+          : newInventory;
 
-      await AsyncStorage.setItem(inventoryKey, JSON.stringify(mergedInventory));
-      setInventory(newInventory);
+        await AsyncStorage.setItem(
+          inventoryKey,
+          JSON.stringify(mergedInventory)
+        );
+        setInventory(newInventory);
+      } catch (error) {}
     },
     [inventory]
   );
@@ -217,8 +234,6 @@ export const AppProvider: React.FC = ({ children }) => {
       const storedInventory = await getInventoryFromStorage();
 
       setUser(storedCurrentUser);
-
-      // console.log({ storedInventory });
 
       if (storedInventory) {
         setInventory(
@@ -235,8 +250,6 @@ export const AppProvider: React.FC = ({ children }) => {
   useEffect(() => {
     loadAppDataFromStorage();
   }, []);
-
-  // console.log({ user, inventory });
 
   return (
     <AppContext.Provider

@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 12,
     fontFamily: theme.fonts.regular,
+    color: theme.colors.textDark,
   },
   label: {
     marginBottom: 6,

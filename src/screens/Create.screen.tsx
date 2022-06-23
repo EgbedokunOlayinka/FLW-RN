@@ -153,7 +153,7 @@ const CreateScreen = ({ navigation }: Props) => {
                   ? errors.description
                   : ''
               }
-              // numberOfLines={6}
+              returnKeyType="done"
               multiline
               style={styles.textArea}
             />

@@ -149,6 +149,7 @@ exports[`Screens should render correctly create screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -208,6 +209,7 @@ exports[`Screens should render correctly create screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -267,6 +269,7 @@ exports[`Screens should render correctly create screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -319,12 +322,14 @@ exports[`Screens should render correctly create screen renders correctly 1`] = `
           onChangeText={[Function]}
           placeholder="Brand new black bags"
           placeholderTextColor="silver"
+          returnKeyType="done"
           style={
             Array [
               Object {
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -549,6 +554,7 @@ exports[`Screens should render correctly edit screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -607,6 +613,7 @@ exports[`Screens should render correctly edit screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -666,6 +673,7 @@ exports[`Screens should render correctly edit screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -718,12 +726,14 @@ exports[`Screens should render correctly edit screen renders correctly 1`] = `
           onChangeText={[Function]}
           placeholder="Brand new black bags"
           placeholderTextColor="silver"
+          returnKeyType="done"
           style={
             Array [
               Object {
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -1195,6 +1205,7 @@ exports[`Screens should render correctly login screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,
@@ -1252,6 +1263,7 @@ exports[`Screens should render correctly login screen renders correctly 1`] = `
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
                 "borderWidth": 1,
+                "color": "#083061",
                 "fontFamily": "Poppins-Regular",
                 "fontSize": 14,
                 "paddingHorizontal": 18,

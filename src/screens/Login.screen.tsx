@@ -46,7 +46,10 @@ const LoginScreen = () => {
         actions.resetForm();
       }
     } catch (error) {
-      // console.log(typeof error);
+      Toast.show({
+        type: 'error',
+        text1: 'Incorrect email/password combination',
+      });
     }
   };
 

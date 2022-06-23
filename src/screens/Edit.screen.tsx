@@ -5,7 +5,6 @@ import {
   Alert,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -181,6 +180,7 @@ const EditScreen = ({ navigation, route }: Props) => {
               }
               multiline
               style={styles.textArea}
+              returnKeyType="done"
             />
           </View>
         </KeyboardAwareScrollView>
